@@ -1,0 +1,69 @@
+paths:
+  /account/login:              
+    post:                
+      tags:               
+        - Account           
+      summary: User Login
+      produces:
+      - application/json
+      parameters:         
+      - in: body          
+        name: login     
+        description:
+        required: false
+        schema:          
+          $ref: '#/definitions/login' 
+      responses:          
+        200:
+          description: An object with user
+  /account/register:              
+    post:                
+      tags:               
+        - Account           
+      summary: User Register
+      produces:
+      - application/json
+      parameters:         
+      - in: body          
+        name: register     
+        description:
+        required: false
+        schema:          
+          $ref: '#/definitions/register' 
+      responses:          
+        200:
+          description: An object with user
+  /account/me:              
+   get:                
+     tags:               
+       - Account           
+     summary: My account information
+     produces:
+     - application/json
+     security:
+       - BearerAuth: []      
+     responses:          
+       200:
+         description: An object with user
+definitions: 
+  login:
+    type: object
+    properties:
+      email:
+        type: string
+        required: true
+      password:
+        type: string
+        required: true
+  register:
+    type: object
+    properties:
+      email:
+        type: string
+        required: true
+      password:
+        type: string
+        required: true 
+      confirmPassword:
+        type: string
+        required: true

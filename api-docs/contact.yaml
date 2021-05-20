@@ -1,0 +1,36 @@
+paths:
+  /user/contact:              
+   post:                
+     tags:               
+       - Contact           
+     summary: Create a new contact
+     produces:
+     - application/json
+     parameters:         
+      - in: body          
+        name: contact     
+        description:
+        required: false
+        schema:          
+          $ref: '#/definitions/contact' 
+     security:
+       - BearerAuth: []      
+     responses:          
+       200:
+         description: An object with user
+definitions: 
+  contact:
+    type: object
+    properties:
+      firstName:
+        type: string
+        required: true
+      lastName:
+        type: string
+        required: true 
+      phoneNumber:
+        type: string
+        required: true
+      address:
+        type: string
+        required: true  
